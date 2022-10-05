@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+
+    <!-- Filters -->
+    <filter-mapping>
+        <filter-name>LocaleFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>UrlFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!-- Context Params -->
+    <context-param>
+        <param-name>languages</param-name>
+        <param-value>ru-RU en-US en-UK</param-value>
+    </context-param>
+
+
+    <!-- Listeners -->
+    <!--<listener>
+        <listener-class>com.moratorium.servlets.listeners.DataLoader</listener-class>
+    </listener>-->
+</web-app>

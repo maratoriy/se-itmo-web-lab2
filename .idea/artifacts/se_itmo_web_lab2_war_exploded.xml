@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="se-itmo-web-lab2:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/se_itmo_web_lab2_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="se-itmo-web-lab2" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="javax.servlet.jstl" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="se-itmo-web-lab2/web/Web" />
+    </root>
+  </artifact>
+</component>
