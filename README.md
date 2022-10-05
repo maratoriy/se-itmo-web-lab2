@@ -1,6 +1,6 @@
 # se-itmo-web-lab2
 Second lab of "Web-Programming" 2 course SE ITMO
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/183a7f0a-14cf-41e1-b513-98a34132c5d8/Untitled.png)
+![Untitled](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/183a7f0a-14cf-41e1-b513-98a34132c5d8/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221005%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221005T183209Z&X-Amz-Expires=86400&X-Amz-Signature=0b014ab34bbe0174ffe838b10ed73c043b8fa8e5e6957185ced873483c71fe0e&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObjectg)
 
 Разработать веб-приложение на базе сервлетов и JSP, определяющее попадание точки на координатной плоскости в заданную область.
 
