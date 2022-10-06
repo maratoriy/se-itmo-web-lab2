@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.Objects;
 
-@WebServlet(name = "ControllerServlet", value = "")
+@WebServlet(name = "ControllerServlet", value = "", loadOnStartup = 0)
 @MultipartConfig
 public class ControllerServlet extends HttpServlet
 {

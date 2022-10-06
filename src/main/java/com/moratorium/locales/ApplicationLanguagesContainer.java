@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 import java.util.stream.Stream;
 
-public class ApplicationLanguagesContainer extends ArrayList<Locale> {
+public class ApplicationLanguagesContainer extends HashSet<Locale> {
 
     private static final String ATTRIBUTE = "languages";
     public static final Locale DEFAULT_LANGUAGE = Locale.US;
@@ -16,6 +16,7 @@ public class ApplicationLanguagesContainer extends ArrayList<Locale> {
                 (list, item) -> list.add(Locale.forLanguageTag(item)),
                 ArrayList::addAll
         ));
+        this.add(DEFAULT_LANGUAGE);
     }
 
     public ApplicationLanguagesContainer() {
@@ -34,7 +35,11 @@ public class ApplicationLanguagesContainer extends ArrayList<Locale> {
     }
 
     public static ApplicationLanguagesContainer getCurrentInstance(HttpServletRequest request) {
-        return (ApplicationLanguagesContainer) request.getServletContext().getAttribute(ATTRIBUTE);
+        return getCurrentInstance(request.getServletContext());
+    }
+
+    public static ApplicationLanguagesContainer getCurrentInstance(ServletContext context) {
+        return (ApplicationLanguagesContainer) context.getAttribute(ATTRIBUTE);
     }
 
 

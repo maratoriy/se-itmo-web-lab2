@@ -15,12 +15,11 @@ import java.util.Objects;
 public class ChangeLocaleServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
-        String language = req.getParameter("language");
-        String country = req.getParameter("country");
-        if (Objects.nonNull(language) && Objects.nonNull(country)) {
+        String languageTag = req.getParameter("languageTag");
+        if (Objects.nonNull(languageTag)) {
             ApplicationLanguagesContainer locales = ApplicationLanguagesContainer.getCurrentInstance(req);
             SessionResourceBundle currentBundle = SessionResourceBundle.getCurrentInstance(req);
-            Locale locale = new Locale(language, country);
+            Locale locale = Locale.forLanguageTag(languageTag);
             if (locales.contains(locale)) {
                 log(String.format("Changing locale to %s from %s", locale, currentBundle.getLocale()));
                 currentBundle.setLocale(locale);

@@ -1,10 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 <jsp:useBean id="bundle" scope="session" type="java.util.ResourceBundle"/>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="ru">
-<%
-    request.setAttribute("title", "Web.Lab#2");
-%>
+<c:set var="title" scope="request" value="Web. Lab#2"/>
 <%@ include file="/jsp/head.jsp" %>
 <body>
 <%@ include file="/jsp/header.jsp" %>

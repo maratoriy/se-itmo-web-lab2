@@ -17,7 +17,9 @@ public class LocaleFilter extends HttpFilter {
     @Override
     protected void doFilter(HttpServletRequest req, HttpServletResponse resp, FilterChain chain) throws IOException, ServletException {
         ApplicationLanguagesContainer locales = ApplicationLanguagesContainer.getCurrentInstance(req);
-        SessionResourceBundle.setFor(req, (locales.contains(req.getLocale()) ? req.getLocale() : ApplicationLanguagesContainer.DEFAULT_LANGUAGE));
+        SessionResourceBundle.setFor(req,
+                (locales.contains(req.getLocale()) ? req.getLocale()
+                                                   : locales.stream().findAny().orElse(ApplicationLanguagesContainer.DEFAULT_LANGUAGE)));
         chain.doFilter(req, resp);
     }
 }

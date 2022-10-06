@@ -2,6 +2,7 @@ package com.moratorium.servlets.filters;
 
 
 import javax.servlet.FilterChain;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpFilter;
@@ -23,28 +24,22 @@ public class UrlFilter extends HttpFilter {
 
         if (!Objects.equals(req.getHttpServletMapping().getServletName(), "ControllerServlet")) {
             if(req.getHttpServletMapping().getMatchValue().isEmpty()) {
-                displayErrorPage(req, resp, HttpServletResponse.SC_NOT_FOUND);//, "Requested resource is not found");
+                resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
             } else {
-                displayErrorPage(req, resp, HttpServletResponse.SC_FORBIDDEN);//, "Access to the requested resource is forbidden");
+                resp.setStatus(HttpServletResponse.SC_FORBIDDEN);
             }
+            req.getRequestDispatcher("/jsp/error.jsp").forward(req, resp);
             return;
         }
 
         try {
             chain.doFilter(req, resp);
         } catch (ServletException | IOException e) {
-            e.printStackTrace();
-            displayErrorPage(req, resp, HttpServletResponse.SC_INTERNAL_SERVER_ERROR);//, "An error occurred on the server");
+            req.getServletContext().log("Caught exception", e);
+            resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            req.getRequestDispatcher("/jsp/error.jsp").forward(req, resp);
         }
     }
 
-    public void displayErrorPage(HttpServletRequest req,
-                                 HttpServletResponse resp,
-                                 int error) throws ServletException, IOException {
-        resp.setStatus(error);
-        //req.setAttribute("message", message);
-        req.setAttribute("error", error);
-        req.getRequestDispatcher("/jsp/error.jsp").forward(req, resp);
-    }
 
 }

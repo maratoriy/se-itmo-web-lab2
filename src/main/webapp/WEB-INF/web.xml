@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-
+    <display-name>se-itmo-web-lab1</display-name>
 
     <!-- Filters -->
     <filter-mapping>
@@ -18,12 +18,19 @@
     <!-- Context Params -->
     <context-param>
         <param-name>languages</param-name>
-        <param-value>ru-RU en-US en-UK</param-value>
+        <param-value>ru-RU en-UK en-US</param-value>
     </context-param>
 
 
     <!-- Listeners -->
-    <!--<listener>
+    <listener>
         <listener-class>com.moratorium.servlets.listeners.DataLoader</listener-class>
-    </listener>-->
+    </listener>
+
+
+    <!-- Error pages -->
+    <error-page>
+        <location>/jsp/error.jsp</location>
+    </error-page>
+
 </web-app>

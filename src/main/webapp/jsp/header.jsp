@@ -9,14 +9,16 @@
         <div class="contact">
             <h1>${bundle['header.author']}<span>${bundle['header.var']} 21700</span></h1>
             <form id="change-language-form" method="post">
-                <select id="lang-switch" name="language">
+                <% if(languages.size()>1) {%>
                     <c:set var="bundleLocale" value="<%=bundle.getLocale()%>"/>
-                    <c:forEach var="locale" items="${languages}">
-                        <option value="${locale.toString()}" ${locale.equals(bundleLocale) ? "selected" : ""}>
-                            ${bundle.getString(locale.toString())}
-                        </option>>
-                    </c:forEach>
-                </select>
+                    <select id="lang-switch" name="language">
+                        <c:forEach var="locale" items="${languages}">
+                            <option value="${locale.toLanguageTag()}" ${locale==bundleLocale ? "selected" : ""}>
+                                ${bundle.containsKey(locale.toString()) ? bundle.getString(locale.toString()) : locale.toString()}
+                            </option>
+                        </c:forEach>
+                    </select>
+                <%}%>
             </form>
         </div>
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/header.js"></script>
